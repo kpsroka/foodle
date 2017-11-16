@@ -1,7 +1,7 @@
 // @flow
 
 export type Meal = {
-  owner: string,
+  orderer: string,
   name: string,
   priceE2: number,
 };
