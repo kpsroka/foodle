@@ -20,19 +20,16 @@ type OrderData = {
   historicOrders: Array<Order>
 }
 
-type ModalMode = {
-  mode: 'MODAL',
-  subMode: 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL'
-};
+type ModalMode = 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL';
 
 type ListingMode = {
-  mode: 'LISTING',
   list: 'ACTIVE' | 'HISTORY',
   expandedOrderIndex: ?number
 };
 
 type UiState = {
-  mode: ModalMode | ListingMode
+  listingMode: ?ListingMode,
+  modalMode: ?ModalMode
 };
 
 type User = {
@@ -48,9 +45,7 @@ type State = {
 
 export const DEFAULT_STATE:State = {
   ui: {
-    mode: {
-      mode: 'MODAL',
-      subMode: 'LOGIN',
-    },
+    listingMode: null,
+    modalMode: 'LOGIN',
   }
 };
