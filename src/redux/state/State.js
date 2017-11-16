@@ -1,43 +1,43 @@
 // @flow
 
-type Meal = {
+export type Meal = {
   owner: string,
   name: string,
   priceE2: number,
 };
 
-type OrderState = 'OPEN' | 'FINALIZED' | 'ORDERED' | 'DELIVERED';
+export type OrderState = 'OPEN' | 'FINALIZED' | 'ORDERED' | 'DELIVERED';
 
-type Order = {
+export type Order = {
   state: OrderState,
   owner: string,
   restaurant: string,
   meals: Array<Meal>
 }
 
-type OrderData = {
+export type OrderData = {
   activeOrders: Array<Order>,
   historicOrders: Array<Order>
 }
 
-type ModalMode = 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL';
+export type ModalMode = 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL';
 
-type ListingMode = {
+export type ListingMode = {
   list: 'ACTIVE' | 'HISTORY',
   expandedOrderIndex: ?number
 };
 
-type UiState = {
+export type UiState = {
   listingMode: ?ListingMode,
   modalMode: ?ModalMode
 };
 
-type User = {
+export type User = {
   name: string,
   // TODO: Add auth tokens.
 };
 
-type State = {
+export type State = {
   orders?: OrderData,
   ui: UiState,
   user?: User,
