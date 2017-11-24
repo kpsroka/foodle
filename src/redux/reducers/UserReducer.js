@@ -6,5 +6,10 @@ export default function UserReducer(user:?User, action:Action):User {
     return null;
   }
 
-  return User;
+  switch (action.type) {
+    case '_SET_USER_NAME':
+      return { name: action.payload.userName };
+    default:
+      return user;
+  }
 }
