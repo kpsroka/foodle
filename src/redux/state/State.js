@@ -45,13 +45,3 @@ export type State = {
   ui: UiState,
   user?: User,
 };
-
-export const DEFAULT_STATE:State = {
-  ui: {
-    listingMode: null,
-    modalMode: {
-      type: 'LOGIN',
-      userCanDismiss: false
-    },
-  }
-};
