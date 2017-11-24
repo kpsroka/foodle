@@ -1,0 +1,64 @@
+#Modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.25);
+
+  #ModalDialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 1.5vh;
+    border-radius: 0.5vh;
+
+    #ModalLabel {
+      display: flex;
+      justify-content: center;
+      align-self: flex-start;
+      font-size: 3vh;
+      height: 4vh;
+    }
+
+    #ModalButtons {
+      display: flex;
+      align-self: flex-end;
+      font-size: 2vh;
+      height: 4vh;
+      align-items: center;
+
+      button {
+        height: 3vh;
+        padding: 0.5vh 0.5vw;
+      }
+
+      #ModalSubmitButton {
+        background-color: #008ec2;
+        color: white;
+        border: none;
+        border-radius: 0.25vh;
+        font-size: inherit;
+        box-shadow: rgba(0, 0, 0, 0.5) 0 0 0;
+        transition: box-shadow 0.15s ease-in-out;
+
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.5) 0.15vh 0.15vh 0.1vh;
+        }
+      }
+
+      #ModalCancelButton {
+        background-color: transparent;
+        color: lightgrey;
+        border: none;
+        font-size: inherit;
+      }
+    }
+  }
+}

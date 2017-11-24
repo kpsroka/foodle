@@ -1,4 +1,5 @@
 import React from 'react';
+import './Input.css';
 
 type InputProps = {|
   id: string,
@@ -12,7 +13,7 @@ type InputProps = {|
 export default function Input(props:InputProps) {
   const color = props.valid ? "inherit" : "firebrick";
   return (
-    <div>
+    <div className="Input">
       <label htmlFor={props.id}>{props.label}</label>
       <input
           style={{color, borderColor: color}}

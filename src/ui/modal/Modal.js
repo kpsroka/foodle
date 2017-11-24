@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Input from './Input';
+import './Modal.css';
 
 type ModalInput = {|
   id: string,
@@ -62,7 +63,7 @@ export default class Modal extends React.Component<ModalCombinedProps, ModalStat
     ) : null;
 
     if (cancelButton !== null || submitButton !== null) {
-      return <div>{cancelButton}{submitButton}</div>;
+      return <div id="ModalButtons">{cancelButton}{submitButton}</div>;
     } else {
       return null;
     }
@@ -71,16 +72,18 @@ export default class Modal extends React.Component<ModalCombinedProps, ModalStat
   render() {
     return (
         <div id="Modal">
-          <div>{this.props.label}</div>
-          {this.props.inputs.map(
-              input =>
-                  <Input key={input.id}
-                         {...input}
-                         defaultValue=''
-                         valid={input.validate(this.state.inputValues[input.id])}
-                         onValueChange={(value:string) => this.setInput(input.id, value)}
-                  />)}
-          {this.renderButtonControls()}
+          <div id="ModalDialog">
+            <div id="ModalLabel">{this.props.label}</div>
+            {this.props.inputs.map(
+                input =>
+                    <Input key={input.id}
+                           {...input}
+                           defaultValue=''
+                           valid={input.validate(this.state.inputValues[input.id])}
+                           onValueChange={(value:string) => this.setInput(input.id, value)}
+                    />)}
+            {this.renderButtonControls()}
+          </div>
         </div>
     );
   }
