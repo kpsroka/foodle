@@ -5,7 +5,6 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import AppComponent from './ui/AppComponent';
-import registerServiceWorker from './registerServiceWorker';
 import OrdersReducer from './redux/reducers/OrdersReducer';
 import UiReducer from './redux/reducers/UiReducer';
 import UserReducer from './redux/reducers/UserReducer';
@@ -24,5 +23,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-registerServiceWorker();
