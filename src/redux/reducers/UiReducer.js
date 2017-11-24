@@ -14,5 +14,10 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
     };
   }
 
-  return uiState;
+  switch (action.type) {
+    case 'DISMISS_MODAL':
+      return {...uiState, modalMode: null};
+    default:
+      return uiState;
+  }
 }
