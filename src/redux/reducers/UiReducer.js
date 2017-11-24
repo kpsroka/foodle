@@ -17,6 +17,15 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
   switch (action.type) {
     case 'DISMISS_MODAL':
       return {...uiState, modalMode: null};
+    case '_SET_MODAL_MESSAGE':
+      return {
+        ...uiState,
+        modalMode: {
+          type: 'MESSAGE',
+          title: action.payload.message,
+          userCanDismiss: action.payload.userCanDismiss
+        }
+      };
     default:
       return uiState;
   }
