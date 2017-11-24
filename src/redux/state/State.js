@@ -18,9 +18,12 @@ export type Order = {
 export type OrderData = {
   activeOrders: Array<Order>,
   historicOrders: Array<Order>
-}
+};
 
-export type ModalMode = 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL';
+export type ModalMode = {
+  type: 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL',
+  userCanDismiss: boolean
+};
 
 export type ListingMode = {
   list: 'ACTIVE' | 'HISTORY',
@@ -46,6 +49,9 @@ export type State = {
 export const DEFAULT_STATE:State = {
   ui: {
     listingMode: null,
-    modalMode: 'LOGIN',
+    modalMode: {
+      type: 'LOGIN',
+      userCanDismiss: false
+    },
   }
 };

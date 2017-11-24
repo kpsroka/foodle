@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   });
 
   it('sets hasModal to be true if state.ui.modalMode is set', () => {
-    const state = { ui: { modalMode: 'LOGIN' } };
+    const state = { ui: { modalMode: { type: 'LOGIN', userCanDismiss: true } } };
     const store = createStore((x) => (x), state);
     const component = shallow(<AppComponent store={store} />);
 
