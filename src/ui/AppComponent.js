@@ -9,7 +9,7 @@ import type { AppProps } from './App';
 function mapStateToProps(state:State):AppProps {
   return {
     hasListing: state.ui.listingMode !== undefined && state.ui.listingMode !== null,
-    hasModal: state.ui.modalMode !== undefined && state.ui.modalMode !== null,
+    modalMode: (state.ui.modalMode !== undefined && state.ui.modalMode !== null) ? state.ui.modalMode : null,
   }
 }
 

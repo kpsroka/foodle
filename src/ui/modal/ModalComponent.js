@@ -3,19 +3,19 @@
 import { connect } from 'react-redux';
 import Modal from './Modal';
 
-import type { ModalProps } from './Modal';
-import type { State } from '../../redux/state/State';
+import type { ModalDispatch, ModalProps } from './Modal';
+import type { ModalMode, State } from '../../redux/state/State';
+import DismissModal from '../../redux/actions/DismissModal';
+import type { Dispatch } from '../../redux/actions/Actions';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const priceString = (arg) => (typeof arg === 'string' && arg.match(/^\s*\d+([,.]\d{0,2})?\s*$/) !== null);
 const logToConsole = (arg) => console.log(arg);
 
-function mapStateToProps(state:State):ModalProps {
-  if (!state.ui.modalMode) {
-    throw new Error('Illegal state');
-  }
+export type ModalComponentOwnProps = {| modalMode: ModalMode |};
 
-  switch (state.ui.modalMode) {
+function mapStateToProps(unused:State, ownProps:ModalComponentOwnProps):ModalProps {
+  switch (ownProps.modalMode.type) {
     case 'LOGIN':
       return {
         label: 'Welcome',
@@ -28,14 +28,14 @@ function mapStateToProps(state:State):ModalProps {
             validate: nonEmptyString,
           }
         ],
-        onSubmit: logToConsole
+        userCanDismiss: false
       };
     case 'MESSAGE':
       return {
         label: 'Message',
         submitButtonText: 'OK',
         inputs: [],
-        onSubmit: logToConsole
+        userCanDismiss: false,
       };
     case 'CREATE_ORDER':
       return {
@@ -55,7 +55,7 @@ function mapStateToProps(state:State):ModalProps {
             validate: nonEmptyString
           },
         ],
-        onSubmit: logToConsole
+        userCanDismiss: true,
       };
     case 'ADD_MEAL': {
       return {
@@ -81,14 +81,21 @@ function mapStateToProps(state:State):ModalProps {
             validate: priceString
           }
         ],
-        onSubmit: logToConsole
+        userCanDismiss: true,
       }
     }
     default:
-      return { label: '💩', submitButtonText: '💩', inputs: [], onSubmit: (input) => {}}
+      return { label: '💩', submitButtonText: '💩', inputs: [], userCanDismiss: false }
   }
 }
 
-const ModalComponent = connect(mapStateToProps)(Modal);
+function mapDispatchToProps(dispatch:Dispatch):ModalDispatch {
+  return {
+    onSubmit: logToConsole,
+    onDismiss: () => { dispatch(DismissModal()) }
+  }
+}
+
+const ModalComponent = connect(mapStateToProps, mapDispatchToProps)(Modal);
 
 export default ModalComponent;

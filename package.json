@@ -5,7 +5,8 @@
   "devDependencies": {
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "sinon": "^4.1.2"
   },
   "dependencies": {
     "flow-bin": "^0.59.0",

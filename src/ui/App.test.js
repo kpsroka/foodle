@@ -6,24 +6,25 @@ import ModalComponent from './modal/ModalComponent';
 import ListingComponent from './listing/ListingComponent';
 
 describe('App', () => {
-  it('renders ModalComponent if props.hasModal is true', () => {
-    const appWithModal = shallow(<App hasModal={true} hasListing={false}/>);
-    expect(appWithModal.contains(<ModalComponent/>)).toBe(true);
+  it('renders ModalComponent if props.modalMode is not null', () => {
+    const modalMode = { type: 'LOGIN', userCanDismiss: true };
+    const appWithModal = shallow(<App modalMode={modalMode} hasListing={false}/>);
+    expect(appWithModal.find(ModalComponent)).toHaveLength(1);
   });
 
   it('renders ListingComponent if props.hasListing is true', () => {
-    const appWithModal = shallow(<App hasModal={false} hasListing={true}/>);
-    expect(appWithModal.contains(<ListingComponent />)).toBe(true);
+    const appWithListing = shallow(<App modalMode={null} hasListing={true}/>);
+    expect(appWithListing.find(ListingComponent)).toHaveLength(1);
   });
 
-  it('does not render ModalComponent if props.hasModal is false', () => {
-    const appWithoutModal = shallow(<App hasModal={false} hasListing={true} />);
-    expect(appWithoutModal.contains(<ModalComponent />)).toBe(false);
+  it('does not render ModalComponent if props.modalMode is null', () => {
+    const appWithoutModal = shallow(<App modalMode={null} hasListing={true} />);
+    expect(appWithoutModal.find(ModalComponent)).toHaveLength(0);
   });
 
   it('does not render ListingComponent if props.hasListing is false', () => {
-    const appWithoutModal = shallow(<App hasModal={true} hasListing={false} />);
-    expect(appWithoutModal.contains(<ListingComponent />)).toBe(false);
+    const appWithoutListing = shallow(<App modalMode={null} hasListing={false} />);
+    expect(appWithoutListing.find(ListingComponent)).toHaveLength(0);
   });
 });
 
