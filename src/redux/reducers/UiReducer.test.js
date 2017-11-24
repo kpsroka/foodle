@@ -23,7 +23,7 @@ describe('UiReducer', () => {
 
       expect(UiReducer(uiState, SetModalMessage(message, userCanDismiss))).toMatchObject({
         listingMode: null,
-        modalMode: { type: 'MESSAGE', title: message, userCanDismiss }
+        modalMode: { type: 'MESSAGE', message, userCanDismiss }
       });
     });
   });

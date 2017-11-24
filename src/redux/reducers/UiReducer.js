@@ -22,7 +22,7 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
         ...uiState,
         modalMode: {
           type: 'MESSAGE',
-          title: action.payload.message,
+          message: action.payload.message,
           userCanDismiss: action.payload.userCanDismiss
         }
       };

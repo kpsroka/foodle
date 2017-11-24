@@ -20,10 +20,16 @@ export type OrderData = {
   historicOrders: Array<Order>
 };
 
-export type ModalMode = {
-  type: 'LOGIN' | 'MESSAGE' | 'CREATE_ORDER' | 'ADD_MEAL',
+export type MessageModalMode = {
+  type: 'MESSAGE',
+  message: string,
   userCanDismiss: boolean
-};
+}
+
+export type ModalMode = {
+  type: 'LOGIN' | 'CREATE_ORDER' | 'ADD_MEAL',
+  userCanDismiss: boolean
+} | MessageModalMode;
 
 export type ListingMode = {
   list: 'ACTIVE' | 'HISTORY',
