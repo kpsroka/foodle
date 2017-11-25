@@ -6,6 +6,13 @@ export type DismissModalAction = {|
   type: 'DISMISS_MODAL'
 |};
 
+export type SetDisplayedListAction = {|
+  type: 'SET_DISPLAYED_LIST',
+  payload: {
+    list: string
+  }
+|};
+
 export type SetModalMessageAction = {|
   type: '_SET_MODAL_MESSAGE',
   payload: {
@@ -30,6 +37,7 @@ export type SetUserNameAction = {|
 
 export type Action =
     DismissModalAction |
+    SetDisplayedListAction |
     SetModalMessageAction |
     SetOrderDataAction |
     SetUserNameAction;
