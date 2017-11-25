@@ -1,5 +1,10 @@
 import React from 'react';
+import ListingHeader from './ListingHeader';
 
 export default function Listing() {
-  return <div>Listing</div>;
+  return (
+    <div>
+      <ListingHeader/>
+    </div>
+  );
 }
