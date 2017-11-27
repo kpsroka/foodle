@@ -1,0 +1,39 @@
+// Colors
+
+$primaryColor: #008ec2;
+$secondaryColor: #e8f9ff;
+$greyOutColor: lightgrey;
+$backgroundShade: rgba(0, 0, 0, 0.25);
+$backgroundStrongShade: rgba(0, 0, 0, 0.5);
+
+@mixin primaryColorSet() {
+  background-color: $primaryColor;
+  color: white;
+}
+
+@mixin secondaryColorSet() {
+  background-color: $secondaryColor;
+  color: white;
+}
+
+// Fonts
+
+// Transitions
+
+$transitionDuration: 0.15s;
+
+// Sizes
+
+$borderRadius: 0.25vh;
+
+// Layout
+
+@mixin vertical() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin horizontal() {
+  display: flex;
+  flex-direction: row;
+}

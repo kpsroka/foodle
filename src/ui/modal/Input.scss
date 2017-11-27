@@ -1,6 +1,7 @@
+@import '../common';
+
 .Input {
-  display: flex;
-  flex-direction: column;
+  @include horizontal();
 
   label {
     font-size: 1.5vh;
