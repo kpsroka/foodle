@@ -6,5 +6,10 @@ export default function OrdersReducer(orderData:?OrderData, action:Action):Order
     return null;
   }
 
-  return orderData;
+  switch (action.type) {
+    case '_SET_ORDER_DATA':
+      return action.payload.orders;
+    default:
+      return orderData;
+  }
 }
