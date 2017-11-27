@@ -42,3 +42,12 @@ $borderRadius: 0.25vh;
   display: flex;
   flex-direction: row;
 }
+
+// Auxiliary
+
+@mixin clickable() {
+  user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+}

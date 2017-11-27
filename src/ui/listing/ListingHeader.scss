@@ -6,15 +6,12 @@
   border-bottom: solid 2.5vh $secondaryColor;
 
   .label {
+    margin-left: 1.5vw;
     padding: 1.5vh 1.5vw;
     border-top-left-radius: $borderRadius;
     border-top-right-radius: $borderRadius;
 
-    user-select: none;
-    &:hover {
-      cursor: pointer;
-    }
-
+    @include clickable();
 
     &.active {
       @include secondaryColorSet();

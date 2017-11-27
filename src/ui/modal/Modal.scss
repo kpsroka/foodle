@@ -42,6 +42,7 @@
 
       #ModalSubmitButton {
         @include primaryColorSet();
+        @include clickable();
 
         font-size: inherit;
         border: none;
