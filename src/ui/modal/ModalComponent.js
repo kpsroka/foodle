@@ -7,6 +7,7 @@ import type { ModalDispatch, ModalProps } from './Modal';
 import type { ModalMode, State } from '../../redux/state/State';
 import DismissModal from '../../redux/actions/DismissModal';
 import type { Dispatch } from '../../redux/actions/Actions';
+import LogIn from '../../redux/actions/LogIn';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const priceString = (arg) => (typeof arg === 'string' && arg.match(/^\s*\d+([,.]\d{0,2})?\s*$/) !== null);
@@ -14,7 +15,7 @@ const logToConsole = (arg) => console.log(arg);
 
 export type ModalComponentOwnProps = {| modalMode: ModalMode |};
 
-function mapStateToProps(unused:State, ownProps:ModalComponentOwnProps):ModalProps {
+function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
   switch (ownProps.modalMode.type) {
     case 'LOGIN':
       return {
@@ -89,10 +90,17 @@ function mapStateToProps(unused:State, ownProps:ModalComponentOwnProps):ModalPro
   }
 }
 
-function mapDispatchToProps(dispatch:Dispatch):ModalDispatch {
+function getOnSubmitDispatch(modalModeType:string, dispatch:Dispatch):({[string]:string} => any) {
+  switch(modalModeType) {
+    case 'LOGIN': return (input) => dispatch(LogIn({name: input.name}));
+    default: return logToConsole;
+  }
+}
+
+function mapDispatchToProps(dispatch:Dispatch, { modalMode }:ModalComponentOwnProps):ModalDispatch {
   return {
-    onSubmit: logToConsole,
-    onDismiss: () => { dispatch(DismissModal()) }
+    onSubmit: getOnSubmitDispatch(modalMode.type, dispatch),
+    onDismiss: () => { dispatch(DismissModal()); }
   }
 }
 
