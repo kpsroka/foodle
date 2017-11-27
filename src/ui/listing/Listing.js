@@ -24,7 +24,7 @@ export default class Listing extends React.PureComponent<ListingProps> {
                   index={index}
                   order={order}
                   expanded={this.props.expandedOrderIndex === index}>
-                {this.renderDetailsComponent(this.props.expandedOrderIndex === index, order)}
+                {this.renderDetailsComponent(index, order)}
               </OrderComponent>
           ))}
         </div>
