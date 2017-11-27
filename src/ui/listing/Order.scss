@@ -10,9 +10,6 @@
 
   .OrderSummary {
     @include horizontal();
-    @inclide clickable();
-
-    &+.OrderSummary {
-    }
+    @include clickable();
   }
 }
