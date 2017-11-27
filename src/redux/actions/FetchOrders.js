@@ -1,6 +1,7 @@
 // @flow
 
 import DismissModal from './DismissModal';
+import SetDisplayedList from './SetDisplayedList';
 import SetModalMessage from './SetModalMessage';
 import SetOrderData from './SetOrderData';
 import type { Meal, Order, OrderData, OrderState } from '../state/State';
@@ -51,6 +52,7 @@ export default function FetchOrders() {
     dispatch(SetModalMessage('Fetching orders', false));
     FetchWithDelay(500).then((data) => {
       dispatch(SetOrderData(data));
+      dispatch(SetDisplayedList('ACTIVE'));
       dispatch(DismissModal());
     })
   }
