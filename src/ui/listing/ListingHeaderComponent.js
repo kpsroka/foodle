@@ -18,7 +18,7 @@ function mapStateToProps(state:State):ListingHeaderProps {
     return {
       labels: LISTING_LABELS,
       activeLabelIndex: LISTING_LABELS.findIndex((label) => (label.id === listingModeList))
-    }
+    };
   }
 
   throw new Error('Illegal state');
