@@ -1,9 +1,10 @@
 // @flow
 
 import React from 'react';
+import type { ListingModeList } from '../../redux/state/State';
 
 export type ListingLabelDef = {
-  id: string,
+  id: ListingModeList,
   text: string,
 };
 
@@ -13,7 +14,7 @@ export type ListingHeaderProps = {
 };
 
 export type ListingHeaderDispatch = {
-  onHeaderClicked: (string) => any
+  onHeaderClicked: (ListingModeList) => any
 };
 
 type ListingHeaderCombinedProps = ListingHeaderProps & ListingHeaderDispatch;

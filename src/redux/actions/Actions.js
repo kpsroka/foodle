@@ -1,6 +1,6 @@
 // @flow
 
-import type { OrderData, State } from '../state/State';
+import type { ListingModeList, OrderData, State } from '../state/State';
 
 export type DismissModalAction = {|
   type: 'DISMISS_MODAL'
@@ -9,7 +9,7 @@ export type DismissModalAction = {|
 export type SetDisplayedListAction = {|
   type: 'SET_DISPLAYED_LIST',
   payload: {
-    list: string
+    list: ListingModeList
   }
 |};
 

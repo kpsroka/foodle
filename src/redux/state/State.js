@@ -31,8 +31,10 @@ export type ModalMode = {
   userCanDismiss: boolean
 } | MessageModalMode;
 
+export type ListingModeList = 'ACTIVE' | 'HISTORY';
+
 export type ListingMode = {
-  list: 'ACTIVE' | 'HISTORY',
+  list: ListingModeList,
   expandedOrderIndex: ?number
 };
 
