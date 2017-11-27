@@ -12,4 +12,14 @@
     @include horizontal();
     @include clickable();
   }
+
+  .OrderExpansionMarker {
+    transform: rotate(0deg);
+    transition: transform $transitionDuration ease-in-out;
+  }
+
+  &.expanded .OrderExpansionMarker {
+    transform: rotate(180deg);
+  }
+
 }
