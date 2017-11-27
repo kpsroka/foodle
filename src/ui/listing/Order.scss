@@ -1,0 +1,18 @@
+@import '../common.scss';
+
+.Order {
+  @include defaultColorSet();
+  @include vertical();
+
+  &+.Order {
+    margin-top: 1.5vh;
+  }
+
+  .OrderSummary {
+    @include horizontal();
+    @inclide clickable();
+
+    &+.OrderSummary {
+    }
+  }
+}
