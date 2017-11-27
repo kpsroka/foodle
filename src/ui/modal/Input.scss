@@ -2,6 +2,7 @@
 
 .Input {
   @include horizontal();
+  align-items: baseline;
 
   label {
     font-size: 1.5vh;
