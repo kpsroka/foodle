@@ -16,7 +16,7 @@ class App extends React.Component<AppProps> {
   render() {
     return (
       <div className="App">
-        <div>Foodle</div>
+        <div className="AppTitleBar">Foodle</div>
         { this.props.hasListing ? <ListingComponent /> : null }
         { this.props.modalMode !== null ? <ModalComponent modalMode={this.props.modalMode} /> : null }
       </div>

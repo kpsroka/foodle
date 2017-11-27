@@ -1,0 +1,11 @@
+@import './common.scss';
+
+.App {
+  .AppTitleBar {
+    @include horizontal();
+    text-align: left;
+    font-weight: bold;
+    @include primaryColorSet();
+    padding: 2vh 2vw;
+  }
+}
