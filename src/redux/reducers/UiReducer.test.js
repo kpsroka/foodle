@@ -1,6 +1,7 @@
 import UiReducer from './UiReducer';
 import DismissModal from '../actions/DismissModal';
 import SetModalMessage from '../actions/SetModalMessage';
+import SetDisplayedList from '../actions/SetDisplayedList';
 
 describe('UiReducer', () => {
   describe('on DismissModal action', () => {
@@ -25,6 +26,15 @@ describe('UiReducer', () => {
         listingMode: null,
         modalMode: { type: 'MESSAGE', message, userCanDismiss }
       });
+    });
+  });
+
+  describe('on SetDisplayedList action', () => {
+    test('sets displayed list to the given value', () => {
+      const uiState = { listingMode: null,  modalMode: null };
+      const list = 'ACTIVE';
+
+      expect(UiReducer(uiState, SetDisplayedList(list)).listingMode).toMatchObject({ list });
     });
   });
 });

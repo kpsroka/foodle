@@ -26,6 +26,16 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
           userCanDismiss: action.payload.userCanDismiss
         }
       };
+    case 'SET_DISPLAYED_LIST':
+      const sameList = uiState.listingMode && (uiState.listingMode.list === action.payload.list);
+      const expandedOrderIndex = uiState.listingMode ? uiState.listingMode.expandedOrderIndex : null;
+      return {
+        ...uiState,
+        listingMode: {
+          list: action.payload.list,
+          expandedOrderIndex: sameList ? expandedOrderIndex : null
+        }
+      };
     default:
       return uiState;
   }
