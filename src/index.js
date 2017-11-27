@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import AppComponent from './ui/AppComponent';
 import OrdersReducer from './redux/reducers/OrdersReducer';
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   user: UserReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const logger = createLogger();
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
     <Provider store={store}>
