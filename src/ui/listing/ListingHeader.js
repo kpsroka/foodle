@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { ListingModeList } from '../../redux/state/State';
+import './ListingHeader.css';
 
 export type ListingLabelDef = {
   id: ListingModeList,

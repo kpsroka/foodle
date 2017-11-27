@@ -1,0 +1,23 @@
+@import '../common.scss';
+
+.ListingHeader {
+  @include horizontal();
+  padding-top: 2.5vh;
+  border-bottom: solid 2.5vh $secondaryColor;
+
+  .label {
+    padding: 1.5vh 1.5vw;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+
+
+    &.active {
+      @include secondaryColorSet();
+    }
+  }
+}

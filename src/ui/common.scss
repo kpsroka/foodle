@@ -13,7 +13,12 @@ $backgroundStrongShade: rgba(0, 0, 0, 0.5);
 
 @mixin secondaryColorSet() {
   background-color: $secondaryColor;
-  color: white;
+  color: black;
+}
+
+@mixin defaultColorSet() {
+  background-color: white;
+  color: black;
 }
 
 // Fonts
