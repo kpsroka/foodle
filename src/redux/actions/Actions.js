@@ -35,12 +35,20 @@ export type SetUserNameAction = {|
   }
 |};
 
+export type ToggleExpandedOrderAction = {|
+  type: 'TOGGLE_EXPANDED_ORDER',
+  payload: {
+    index: number
+  }
+|};
+
 export type Action =
     DismissModalAction |
     SetDisplayedListAction |
     SetModalMessageAction |
     SetOrderDataAction |
-    SetUserNameAction;
+    SetUserNameAction |
+    ToggleExpandedOrderAction;
 
 export type GetState = () => State;
 // Circular type dependency :/
