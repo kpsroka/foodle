@@ -36,6 +36,16 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
           expandedOrderIndex: sameList ? expandedOrderIndex : null
         }
       };
+    case 'TOGGLE_EXPANDED_ORDER': {
+      const sameIndex = uiState.listingMode && (uiState.listingMode.expandedOrderIndex === action.payload.index);
+      return {
+        ...uiState,
+        listingMode: {
+          ...uiState.listingMode,
+          expandedOrderIndex: sameIndex ? null : action.payload.index
+        }
+      };
+    }
     default:
       return uiState;
   }

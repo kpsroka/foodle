@@ -2,6 +2,7 @@ import UiReducer from './UiReducer';
 import DismissModal from '../actions/DismissModal';
 import SetModalMessage from '../actions/SetModalMessage';
 import SetDisplayedList from '../actions/SetDisplayedList';
+import ToggleExpandedOrder from '../actions/ToggleExpandedOrder';
 
 describe('UiReducer', () => {
   describe('on DismissModal action', () => {
@@ -35,6 +36,25 @@ describe('UiReducer', () => {
       const list = 'ACTIVE';
 
       expect(UiReducer(uiState, SetDisplayedList(list)).listingMode).toMatchObject({ list });
+    });
+  });
+
+  describe('on ToggleExpandedOrder action', () => {
+    test('sets expandedOrderIndex to given, if it was set to different', () => {
+      const uiState = { listingMode: { list: 'ACTIVE', expandedOrderIndex: 1 }, modalMode: null };
+      const newOrderIndex = 3;
+      expect(UiReducer(uiState, ToggleExpandedOrder(newOrderIndex)).listingMode).toMatchObject(
+          { expandedOrderIndex: newOrderIndex }
+      );
+    });
+
+    test('sets expandedOrderIndex to null, if it was set to given', () => {
+      const expandedOrderIndex = 2;
+      const uiState = { listingMode: { list: 'ACTIVE', expandedOrderIndex }, modalMode: null };
+
+      expect(UiReducer(uiState, ToggleExpandedOrder(expandedOrderIndex)).listingMode).toMatchObject(
+          { expandedOrderIndex: null }
+      );
     });
   });
 });
