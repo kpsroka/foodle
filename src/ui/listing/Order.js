@@ -30,7 +30,9 @@ export default class Order extends React.Component<OrderCombinedProps> {
             <div>{this.props.restaurant}</div>
             <div>{this.props.owner}</div>
             <div>{this.props.formattedTotalPrice}</div>
-            <div className="OrderExpansionMarker" />
+            <div className="OrderExpansionMarker">
+              <i className="fa fa-chevron-down" aria-hidden="true" />
+            </div>
           </div>
           {this.props.children}
         </div>
