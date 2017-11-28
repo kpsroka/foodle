@@ -6,6 +6,7 @@
   border: none;
   border-radius: $borderRadius;
   font-size: inherit;
+  white-space: nowrap;
 }
 
 @mixin primaryButton() {

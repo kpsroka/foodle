@@ -15,6 +15,7 @@
 
     .OrderDetailsStatus {
       @include horizontal();
+      flex-shrink: 0;
 
       .OrderDetailsStatusString {
         color: $greyOutColor;

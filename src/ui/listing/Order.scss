@@ -4,6 +4,8 @@
 .Order {
   @include defaultColorSet();
   @include vertical();
+  padding: $paddingLarge;
+  box-shadow: $backgroundStrongShade 0.15vh 0.15vh 0.1vh;
 
   &+.Order {
     margin-top: 1.5vh;
