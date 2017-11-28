@@ -2,17 +2,19 @@
 
 $primaryColor: #008ec2;
 $secondaryColor: #e8f9ff;
-$greyOutColor: lightgrey;
+$greyOutColor: grey;
 $backgroundShade: rgba(0, 0, 0, 0.25);
 $backgroundStrongShade: rgba(0, 0, 0, 0.5);
 
 @mixin primaryColorSet() {
   background-color: $primaryColor;
+  border-color: $primaryColor;
   color: white;
 }
 
 @mixin secondaryColorSet() {
   background-color: $secondaryColor;
+  border-color: $secondaryColor;
   color: black;
 }
 
@@ -29,7 +31,14 @@ $transitionDuration: 0.15s;
 
 // Sizes
 
-$borderRadius: 0.25vh;
+$borderRadius: 0.75vh;
+$verticalPaddingLarge: 2vh;
+$horizontalPaddingLarge: 2vw;
+$paddingLarge: $verticalPaddingLarge $horizontalPaddingLarge;
+
+$verticalPaddingSmall: .75vh;
+$horizontalPaddingSmall: .75vw;
+$paddingSmall: $verticalPaddingSmall $horizontalPaddingSmall;
 
 // Layout
 
@@ -41,6 +50,11 @@ $borderRadius: 0.25vh;
 @mixin horizontal() {
   display: flex;
   flex-direction: row;
+}
+
+@mixin spreadApart() {
+  display: flex;
+  justify-content: space-between;
 }
 
 @mixin fitViewPort() {

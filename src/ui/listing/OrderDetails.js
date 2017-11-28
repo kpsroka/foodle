@@ -15,6 +15,20 @@ export type OrderDetailsDispatch = {|
 
 type OrderDetailsCombinedProps = OrderDetailsProps & OrderDetailsDispatch;
 
+const ORDERED_ORDER_STATES:Array<OrderState> = ['OPEN', 'FINALIZED', 'ORDERED', 'DELIVERED'];
+
+function comesBefore(stateA:OrderState, stateB:OrderState) {
+  return ORDERED_ORDER_STATES.indexOf(stateA) < ORDERED_ORDER_STATES.indexOf(stateB);
+}
+
+function getStateLabelStyles(propsState:OrderState, labelState:OrderState) {
+  const auxState =
+      (propsState === labelState) ? ' CurrentState' :
+          (comesBefore(labelState, propsState) ? ' PastState' : ' FutureState');
+
+  return `OrderDetailsStatusState${auxState}`;
+}
+
 export default function OrderDetails(props:OrderDetailsCombinedProps) {
   return (
     <div className="OrderDetails">
@@ -25,10 +39,22 @@ export default function OrderDetails(props:OrderDetailsCombinedProps) {
         <div className="OrderDetailsStatus">
           <div className="OrderDetailsStatusString">Status</div>
           <div>
-            <span>Opened</span>
-            <span>Finalized</span>
-            <span>Ordered</span>
-            <span>Delivered</span>
+            <span className={getStateLabelStyles(props.state, 'OPEN')}>
+              <i className="fa fa-pencil" aria-hidden="true" />
+              Opened
+            </span>
+            <span className={getStateLabelStyles(props.state, 'FINALIZED')}>
+              <i className="fa fa-lock" aria-hidden="true" />
+              Finalized
+            </span>
+            <span className={getStateLabelStyles(props.state, 'ORDERED')}>
+              <i className="fa fa-phone" aria-hidden="true" />
+              Ordered
+            </span>
+            <span className={getStateLabelStyles(props.state, 'ORDERED')}>
+              <i className="fa fa-check" aria-hidden="true" />
+              Delivered
+            </span>
           </div>
         </div>
       </div>
