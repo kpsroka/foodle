@@ -25,9 +25,7 @@
 
       .OrderDetailsStatusState {
         padding: $horizontalPaddingSmall $verticalPaddingLarge;
-        border-width: 0;
-        border-top-width: 0.5vh;
-        border-bottom-width: 0.5vh;
+        border-width: 0.5vh 0;
         border-style: solid;
         display: inline-flex;
         align-items: center;
