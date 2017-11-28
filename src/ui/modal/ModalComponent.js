@@ -7,6 +7,8 @@ import type { ModalMode, State } from '../../redux/state/State';
 import DismissModal from '../../redux/actions/DismissModal';
 import type { Dispatch } from '../../redux/actions/Actions';
 import LogIn from '../../redux/actions/LogIn';
+import AddMeal from '../../redux/actions/AddMeal';
+import DispatchAndCloseModal from '../../redux/actions/DispatchAndCloseModalThunk';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const priceString = (arg) => (typeof arg === 'string' && arg.match(/^\s*\d+([,.]\d{0,2})?\s*$/) !== null);
@@ -90,8 +92,14 @@ function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
 }
 
 function getOnSubmitDispatch(modalMode:ModalMode, dispatch:Dispatch):({[string]:string} => any) {
-  switch(modalMode.type) {
+  switch (modalMode.type) {
     case 'LOGIN': return (input) => dispatch(LogIn({name: input.name}));
+    case 'ADD_MEAL': return (input) => {
+      dispatch(
+          DispatchAndCloseModal(
+              // $FlowFixMe: flow can't refine modalMode to AddMealModalMode?
+              AddMeal(modalMode.orderIndex, input.meal, input.orderer, input.price)));
+    };
     default: return logToConsole;
   }
 }
