@@ -1,0 +1,7 @@
+@import '../common.scss';
+@import './shared.scss';
+
+.Meal {
+  @include horizontal();
+  @include listingRow();
+}

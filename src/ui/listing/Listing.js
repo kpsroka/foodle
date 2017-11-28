@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ListingHeaderComponent from './ListingHeaderComponent';
+import Meal from './Meal';
 import OrderComponent from './OrderComponent';
 import OrderDetailsComponent from './OrderDetailsComponent';
 import type { Order } from '../../redux/state/State';
@@ -12,7 +13,20 @@ export type ListingProps = {|
 
 export default class Listing extends React.PureComponent<ListingProps> {
   renderDetailsComponent(index, order) {
-    return this.props.expandedOrderIndex === index ? <OrderDetailsComponent order={order} index={index} /> : null;
+    if (this.props.expandedOrderIndex !== index) {
+      return null;
+    }
+
+    return (
+      <OrderDetailsComponent order={order} index={index}>
+        {order.meals.map((meal, mealIndex) => (
+          <Meal
+              key={`${index}:${mealIndex}`}
+              meal={meal}
+          />
+        ))}
+      </OrderDetailsComponent>
+    );
   };
 
   render() {

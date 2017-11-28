@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import './Order.css';
+import type { Children } from '../Children';
 
 export type OrderProps = {|
   restaurant: string,
@@ -12,10 +13,6 @@ export type OrderProps = {|
 
 export type OrderDispatch = {|
   onOrderExpansionToggle: () => any,
-|};
-
-type Children = {|
-  children: ?React.Node
 |};
 
 type OrderCombinedProps = OrderProps & OrderDispatch & Children;

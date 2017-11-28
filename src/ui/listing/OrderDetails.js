@@ -3,6 +3,7 @@
 import * as React from 'react';
 import type { Meal, OrderState } from '../../redux/state/State';
 import './OrderDetails.css';
+import type { Children } from '../Children';
 
 export type OrderDetailsProps = {|
   meals: Array<Meal>,
@@ -13,7 +14,7 @@ export type OrderDetailsDispatch = {|
   onAddMeal: () => any,
 |};
 
-type OrderDetailsCombinedProps = OrderDetailsProps & OrderDetailsDispatch;
+type OrderDetailsCombinedProps = OrderDetailsProps & OrderDetailsDispatch & Children;
 
 const ORDERED_ORDER_STATES:Array<OrderState> = ['OPEN', 'FINALIZED', 'ORDERED', 'DELIVERED'];
 
@@ -59,11 +60,7 @@ export default function OrderDetails(props:OrderDetailsCombinedProps) {
         </div>
       </div>
       <div className="OrderDetailsMeals">
-        {props.meals.map((meal, index) => (
-          <div key={index}>
-            meal.name, meal.orderer, meal.priceE2
-          </div>
-        ))}
+        {props.children}
       </div>
     </div>
   );
