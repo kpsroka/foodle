@@ -3,6 +3,7 @@ import DismissModal from '../actions/DismissModal';
 import SetModalMessage from '../actions/SetModalMessage';
 import SetDisplayedList from '../actions/SetDisplayedList';
 import ToggleExpandedOrder from '../actions/ToggleExpandedOrder';
+import ShowAddMealModal from '../actions/ShowAddMealModal';
 
 describe('UiReducer', () => {
   describe('on DismissModal action', () => {
@@ -52,9 +53,18 @@ describe('UiReducer', () => {
       const expandedOrderIndex = 2;
       const uiState = { listingMode: { list: 'ACTIVE', expandedOrderIndex }, modalMode: null };
 
-      expect(UiReducer(uiState, ToggleExpandedOrder(expandedOrderIndex)).listingMode).toMatchObject(
-          { expandedOrderIndex: null }
-      );
+      expect(UiReducer(uiState, ToggleExpandedOrder(expandedOrderIndex)).listingMode)
+          .toMatchObject({ expandedOrderIndex: null });
     });
   });
+
+  describe('on ShowAddMealModal action', () => {
+    test('sets modalMode to ADD_MEAL with proper orderIndex set', () => {
+      const orderIndex = 4;
+      const uiState = { listingMode: null, modalMode: null };
+
+      expect(UiReducer(uiState, ShowAddMealModal(orderIndex)).modalMode)
+          .toMatchObject({ type: 'ADD_MEAL', orderIndex });
+    });
+  })
 });

@@ -26,6 +26,14 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
           userCanDismiss: action.payload.userCanDismiss
         }
       };
+    case 'SHOW_ADD_MEAL_MODAL':
+      return {
+        ...uiState,
+        modalMode: {
+          type: 'ADD_MEAL',
+          orderIndex: action.payload.index
+        }
+      };
     case 'SET_DISPLAYED_LIST':
       const sameList = uiState.listingMode && (uiState.listingMode.list === action.payload.list);
       const expandedOrderIndex = uiState.listingMode ? uiState.listingMode.expandedOrderIndex : null;
