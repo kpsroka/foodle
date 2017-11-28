@@ -7,9 +7,10 @@
   .App .AppTitleBar {
     display: flex;
     flex-direction: row;
+    font-size: 3.5vh;
+    line-height: 4.75vh;
+    padding: 2vh 2vw;
     text-align: left;
-    font-weight: bold;
     background-color: #008ec2;
     border-color: #008ec2;
-    color: white;
-    padding: 2vh 2vw; }
+    color: white; }

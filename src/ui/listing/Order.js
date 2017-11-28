@@ -24,12 +24,13 @@ export default class Order extends React.Component<OrderCombinedProps> {
   render() {
     return (
         <div className={`Order${this.props.expanded ? " expanded" : ""}`}>
-          <div
-              className="OrderSummary"
-              onClick={() => { this.props.onOrderExpansionToggle(); }}>
-            <div>{this.props.restaurant}</div>
-            <div>{this.props.owner}</div>
-            <div>{this.props.formattedTotalPrice}</div>
+          <div className="OrderSummary"
+               onClick={() => { this.props.onOrderExpansionToggle(); }}>
+            <div>
+              <div>{this.props.restaurant}</div>
+              <div>{this.props.owner}</div>
+              <div>{this.props.formattedTotalPrice}</div>
+            </div>
             <div className="OrderExpansionMarker">
               <i className="fa fa-chevron-down" aria-hidden="true" />
             </div>

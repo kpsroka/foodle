@@ -1,0 +1,26 @@
+@import '../common.scss';
+
+.Listing {
+  @include vertical();
+  @include secondaryColorSet();
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  position: fixed;
+  top: $headerHeight;
+  bottom: $footerHeight;
+  left: 0;
+  right: 0;
+}
+
+.ListingHeader {
+  width: 100%;
+  box-sizing: border-box;
+  padding: $verticalPaddingLarge 10vw 0;
+  background-color: white;
+}
+
+.ListingBody {
+  width: 80vw;
+}

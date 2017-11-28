@@ -5,9 +5,9 @@
 
   .AppTitleBar {
     @include horizontal();
+    @include largeFont();
+    padding: $paddingLarge;
     text-align: left;
-    font-weight: bold;
     @include primaryColorSet();
-    padding: 2vh 2vw;
   }
 }

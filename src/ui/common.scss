@@ -25,6 +25,28 @@ $backgroundStrongShade: rgba(0, 0, 0, 0.5);
 
 // Fonts
 
+$smallFontSize: 1.2vh;
+$smallLineHeight: 1.8vh;
+$regularFontSize: 2vh;
+$regularLineHeight: 3vh;
+$largeFontSize: 3.5vh;
+$largeLineHeight: 4.75vh;
+
+@mixin smallFont() {
+  font-size: $smallFontSize;
+  line-height: $smallLineHeight;
+}
+
+@mixin regularFont() {
+  font-size: $regularFontSize;
+  line-height: $regularLineHeight;
+}
+
+@mixin largeFont() {
+  font-size: $largeFontSize;
+  line-height: $largeLineHeight;
+}
+
 // Transitions
 
 $transitionDuration: 0.15s;
@@ -39,6 +61,9 @@ $paddingLarge: $verticalPaddingLarge $horizontalPaddingLarge;
 $verticalPaddingSmall: .75vh;
 $horizontalPaddingSmall: .75vw;
 $paddingSmall: $verticalPaddingSmall $horizontalPaddingSmall;
+
+$headerHeight: 2 * $verticalPaddingLarge + $largeLineHeight;
+$footerHeight: 2 * $verticalPaddingLarge + $regularLineHeight;
 
 // Layout
 
