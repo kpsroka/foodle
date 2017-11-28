@@ -2,8 +2,7 @@
 
 @mixin button() {
   @include clickable();
-  height: 3vh;
-  padding: 0.5vh 0.5vw;
+  padding: $paddingSmall;
   border: none;
   border-radius: $borderRadius;
   font-size: inherit;

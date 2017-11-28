@@ -7,6 +7,7 @@
   .OrderDetailsHeader {
     @include horizontal();
     @include spreadApart();
+    padding: $paddingLarge;
 
     .OrderDetailsAddMeal {
       @include primaryButton();
@@ -21,22 +22,30 @@
       }
 
       .OrderDetailsStatusState {
-        padding: $paddingSmall;
-        border-width: 0.5vh;
+        padding: $horizontalPaddingSmall $verticalPaddingLarge;
+        border-width: 0;
+        border-top-width: 0.5vh;
+        border-bottom-width: 0.5vh;
         border-style: solid;
 
         &:first-child {
           border-bottom-left-radius: $borderRadius;
           border-top-left-radius: $borderRadius;
+          border-left-width: 0.5vh;
         }
 
         &:last-child {
           border-bottom-right-radius: $borderRadius;
           border-top-right-radius: $borderRadius;
+          border-right-width: 0.5vh;
         }
 
         &.PastState {
           @include primaryColorSet();
+          &+.PastState {
+            border-left-width: 0.25vh;
+            border-left-color: white;
+          }
         }
 
         &.CurrentState {
@@ -47,6 +56,14 @@
         &.FutureState {
           color: $greyOutColor;
           background-color: lightgrey;
+
+          &+.FutureState {
+            border-left-width: 0.25vh;
+          }
+        }
+
+        &::after {
+
         }
 
         .fa {
