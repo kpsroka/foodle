@@ -1,0 +1,18 @@
+@import '../common.scss';
+@import '../button.scss';
+
+.OrderDetails {
+  @include vertical();
+
+  .OrderDetailsHeader {
+    @include horizontal();
+
+    .OrderDetailsAddMeal {
+      @include primaryButton();
+    }
+
+    .OrderDetailsStatus {
+      @include horizontal();
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import type { Meal, OrderState } from '../../redux/state/State';
+import './OrderDetails.css';
 
 export type OrderDetailsProps = {|
   meals: Array<Meal>,
