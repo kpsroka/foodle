@@ -9,7 +9,7 @@ import type { Dispatch } from '../../redux/actions/Actions';
 import LogIn from '../../redux/actions/LogIn';
 import AddMeal from '../../redux/actions/AddMeal';
 import DispatchAndCloseModal from '../../redux/actions/DispatchAndCloseModalThunk';
-import { isValidPriceString } from '../../redux/PriceFormatter';
+import { isValidPriceString } from '../../PriceFormatter';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const logToConsole = (arg) => console.log(arg);

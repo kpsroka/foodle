@@ -1,6 +1,6 @@
 import type { Meal, OrderData } from '../state/State';
 import type { Action, AddMealAction } from '../actions/Actions';
-import { parsePrice } from '../PriceFormatter';
+import { parsePrice } from '../../PriceFormatter';
 
 function createMeal(action:AddMealAction):Meal {
   const payload = action.payload;

@@ -6,7 +6,7 @@ import Order from './Order';
 import type { Order as OrderT, State } from '../../redux/state/State';
 import type { Dispatch } from '../../redux/actions/Actions';
 import ToggleExpandedOrder from '../../redux/actions/ToggleExpandedOrder';
-import { formatPrice } from '../../redux/PriceFormatter';
+import { formatPrice } from '../../PriceFormatter';
 
 export type OrderComponentOwnProps = {|
   order: OrderT,

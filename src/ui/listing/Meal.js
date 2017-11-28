@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { Meal as MealT } from '../../redux/state/State';
 import './Meal.css';
-import { formatPrice } from '../../redux/PriceFormatter';
+import { formatPrice } from '../../PriceFormatter';
 
 export type MealProps = {
   meal: MealT
