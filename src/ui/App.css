@@ -1,8 +1,14 @@
-.App .AppTitleBar {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-  font-weight: bold;
-  background-color: #008ec2;
-  color: white;
-  padding: 2vh 2vw; }
+.App {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  .App .AppTitleBar {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    font-weight: bold;
+    background-color: #008ec2;
+    color: white;
+    padding: 2vh 2vw; }

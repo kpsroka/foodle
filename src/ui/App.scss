@@ -1,6 +1,8 @@
 @import './common.scss';
 
 .App {
+  @include fitViewPort();
+
   .AppTitleBar {
     @include horizontal();
     text-align: left;
