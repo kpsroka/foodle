@@ -2,11 +2,11 @@
 
 .Input {
   @include horizontal();
+  @include spreadApart();
   align-items: baseline;
 
   label {
-    font-size: 1.5vh;
-    padding: 0.5vh;
+    padding-right: $horizontalPaddingSmall;
   }
 
   input {
@@ -14,6 +14,5 @@
     border-width: 1px;
     border-radius: 0.25vh;
     padding: 0.5vh;
-    font-size: 1.5vh;
   }
 }

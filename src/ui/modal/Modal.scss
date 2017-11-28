@@ -14,8 +14,8 @@
     @include vertical();
     justify-content: center;
     background-color: white;
-    padding: 1.5vh;
-    border-radius: 0.5vh;
+    padding: $paddingLarge;
+    border-radius: $borderRadius;
 
     #ModalLabel {
       display: flex;
@@ -30,14 +30,15 @@
       align-self: flex-end;
       align-items: center;
       font-size: 2vh;
-      height: 4vh;
+      padding-top: $verticalPaddingSmall;
 
       #ModalSubmitButton {
         @include primaryButton();
       }
 
-      #ModalCancelButton {
+      #ModalDismissButton {
         @include secondaryButton();
+        margin-right: $horizontalPaddingSmall;
       }
     }
   }
