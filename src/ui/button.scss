@@ -1,10 +1,11 @@
-@import "./common.scss";
+@import './common.scss';
 
 @mixin button() {
   @include clickable();
   height: 3vh;
   padding: 0.5vh 0.5vw;
   border: none;
+  border-radius: $borderRadius;
   font-size: inherit;
 }
 
