@@ -1,9 +1,8 @@
 // @flow
 
 import { connect } from 'react-redux';
-import Modal from './Modal';
-
 import type { ModalDispatch, ModalProps } from './Modal';
+import Modal from './Modal';
 import type { ModalMode, State } from '../../redux/state/State';
 import DismissModal from '../../redux/actions/DismissModal';
 import type { Dispatch } from '../../redux/actions/Actions';
@@ -90,8 +89,8 @@ function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
   }
 }
 
-function getOnSubmitDispatch(modalModeType:string, dispatch:Dispatch):({[string]:string} => any) {
-  switch(modalModeType) {
+function getOnSubmitDispatch(modalMode:ModalMode, dispatch:Dispatch):({[string]:string} => any) {
+  switch(modalMode.type) {
     case 'LOGIN': return (input) => dispatch(LogIn({name: input.name}));
     default: return logToConsole;
   }
@@ -99,7 +98,7 @@ function getOnSubmitDispatch(modalModeType:string, dispatch:Dispatch):({[string]
 
 function mapDispatchToProps(dispatch:Dispatch, { modalMode }:ModalComponentOwnProps):ModalDispatch {
   return {
-    onSubmit: getOnSubmitDispatch(modalMode.type, dispatch),
+    onSubmit: getOnSubmitDispatch(modalMode, dispatch),
     onDismiss: () => { dispatch(DismissModal()); }
   }
 }

@@ -19,6 +19,8 @@
       .OrderDetailsStatusString {
         color: $greyOutColor;
         padding-right: $horizontalPaddingSmall;
+        display: flex;
+        align-items: center;
       }
 
       .OrderDetailsStatusState {
@@ -27,6 +29,8 @@
         border-top-width: 0.5vh;
         border-bottom-width: 0.5vh;
         border-style: solid;
+        display: inline-flex;
+        align-items: center;
 
         &:first-child {
           border-bottom-left-radius: $borderRadius;
