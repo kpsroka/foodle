@@ -60,6 +60,7 @@ export type ToggleExpandedOrderAction = {|
 |};
 
 export type Action =
+    AddMealAction |
     DismissModalAction |
     SetDisplayedListAction |
     SetModalMessageAction |
