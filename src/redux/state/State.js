@@ -26,10 +26,14 @@ export type MessageModalMode = {
   userCanDismiss: boolean
 }
 
+export type AddMealModalMode = {
+  type: 'ADD_MEAL',
+  orderIndex: number,
+}
+
 export type ModalMode = {
-  type: 'LOGIN' | 'CREATE_ORDER' | 'ADD_MEAL',
-  userCanDismiss: boolean
-} | MessageModalMode;
+  type: 'LOGIN' | 'CREATE_ORDER',
+} | MessageModalMode | AddMealModalMode;
 
 export type ListingModeList = 'ACTIVE' | 'HISTORY';
 
