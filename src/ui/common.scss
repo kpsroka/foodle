@@ -26,11 +26,11 @@ $backgroundStrongShade: rgba(0, 0, 0, 0.5);
 // Fonts
 
 $smallFontSize: 1.5vh;
-$smallLineHeight: 2.25vh;
+$smallLineHeight: 2vh;
 $regularFontSize: 2.5vh;
-$regularLineHeight: 3.75vh;
+$regularLineHeight: 3.25vh;
 $largeFontSize: 4vh;
-$largeLineHeight: 6vh;
+$largeLineHeight: 5.25vh;
 
 @mixin smallFont() {
   font-size: $smallFontSize;
