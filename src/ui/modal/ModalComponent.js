@@ -9,9 +9,9 @@ import type { Dispatch } from '../../redux/actions/Actions';
 import LogIn from '../../redux/actions/LogIn';
 import AddMeal from '../../redux/actions/AddMeal';
 import DispatchAndCloseModal from '../../redux/actions/DispatchAndCloseModalThunk';
+import { isValidPriceString } from '../../redux/PriceFormatter';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
-const priceString = (arg) => (typeof arg === 'string' && arg.match(/^\s*\d+([,.]\d{0,2})?\s*$/) !== null);
 const logToConsole = (arg) => console.log(arg);
 
 export type ModalComponentOwnProps = {| modalMode: ModalMode |};
@@ -80,7 +80,7 @@ function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
             id: 'price',
             label: 'Price',
             hint: 'e.g. 20,00',
-            validate: priceString
+            validate: isValidPriceString
           }
         ],
         userCanDismiss: true,
