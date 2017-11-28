@@ -34,7 +34,7 @@ function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
     case 'MESSAGE':
       return {
         label: ownProps.modalMode.message,
-        submitButtonText: 'OK',
+        submitButtonText: ownProps.modalMode.userCanDismiss ? 'OK' : '',
         inputs: [],
         userCanDismiss: false,
       };
