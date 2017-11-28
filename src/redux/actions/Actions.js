@@ -2,6 +2,16 @@
 
 import type { ListingModeList, OrderData, State } from '../state/State';
 
+export type AddMealAction = {|
+  type: 'ADD_MEAL',
+  payload: {
+    orderIndex: number,
+    mealName: string,
+    mealOrderer: string,
+    mealPriceString: string
+  }
+|};
+
 export type DismissModalAction = {|
   type: 'DISMISS_MODAL'
 |};
