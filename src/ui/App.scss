@@ -2,6 +2,7 @@
 
 .App {
   @include fitViewPort();
+  @include regularFont();
 
   .AppTitleBar {
     @include horizontal();
