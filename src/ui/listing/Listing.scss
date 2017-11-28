@@ -1,4 +1,5 @@
 @import '../common.scss';
+@import './shared.scss';
 
 .Listing {
   @include vertical();
@@ -12,15 +13,24 @@
   bottom: $footerHeight;
   left: 0;
   right: 0;
-}
 
-.ListingHeader {
-  width: 100%;
-  box-sizing: border-box;
-  padding: $verticalPaddingLarge 10vw 0;
-  background-color: white;
-}
+  .ListingColumnLabels {
+    @include listingRow();
+    @include smallFont();
+    color: $greyOutColor;
 
-.ListingBody {
-  width: 80vw;
+    padding: $verticalPaddingLarge $horizontalPaddingLarge $verticalPaddingSmall;
+
+  }
+
+  .ListingHeader {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $verticalPaddingLarge 10vw 0;
+    background-color: white;
+  }
+
+  .ListingBody {
+    width: 80vw;
+  }
 }

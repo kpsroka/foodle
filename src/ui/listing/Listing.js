@@ -21,6 +21,11 @@ export default class Listing extends React.PureComponent<ListingProps> {
           <ListingHeaderComponent />
           <div className="ListingBody">
             <div className="ListingColumnLabels">
+              <div>
+                <div>Orders from</div>
+                <div>Owner</div>
+                <div>Price</div>
+              </div>
             </div>
             {this.props.orders.map((order, index) => (
                 <OrderComponent
