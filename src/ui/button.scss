@@ -1,0 +1,30 @@
+@import "./common.scss";
+
+@mixin button() {
+  @include clickable();
+  height: 3vh;
+  padding: 0.5vh 0.5vw;
+  border: none;
+  font-size: inherit;
+}
+
+@mixin primaryButton() {
+  @include button();
+  @include primaryColorSet();
+
+  box-shadow: $backgroundStrongShade 0 0 0;
+  transition: box-shadow $transitionDuration ease-in-out;
+
+  &:hover {
+    box-shadow: $backgroundStrongShade 0.15vh 0.15vh 0.1vh;
+  }
+}
+
+@mixin secondaryButton() {
+  @include button();
+
+  background-color: white;
+  color: $greyOutColor;
+  border: none;
+  font-size: inherit;
+}
