@@ -6,12 +6,13 @@ import './Meal.css';
 import { formatPrice } from '../../PriceFormatter';
 
 export type MealProps = {
-  meal: MealT
+  meal: MealT,
+  editable: boolean,
 };
 
 export default function Meal(props:MealProps) {
   return (
-    <div className="Meal">
+    <div className={`Meal${props.editable ? ' EditableMeal' : ''}`}>
       <div>
         <div>{props.meal.name}</div>
         <div>{props.meal.orderer}</div>

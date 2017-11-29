@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ListingHeaderComponent from './ListingHeaderComponent';
-import Meal from './Meal';
+import MealComponent from './MealComponent';
 import OrderComponent from './OrderComponent';
 import OrderDetailsComponent from './OrderDetailsComponent';
 import type { ListingModeList, Order } from '../../redux/state/State';
@@ -21,7 +21,7 @@ export default class Listing extends React.PureComponent<ListingProps> {
     return (
       <OrderDetailsComponent order={order} index={index}>
         {order.meals.map((meal, mealIndex) => (
-          <Meal
+          <MealComponent
               key={`${this.props.list}:${index}:${mealIndex}`}
               meal={meal}
           />
