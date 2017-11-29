@@ -52,7 +52,6 @@ export default class Modal extends React.Component<ModalCombinedProps, ModalStat
     return true;
   }
 
-
   renderButtonControls() {
     const cancelButton = this.props.userCanDismiss ?
         <button id="ModalDismissButton" onClick={() => this.props.onDismiss()}>Cancel</button>
