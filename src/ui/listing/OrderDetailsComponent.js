@@ -11,7 +11,7 @@ import { selectOrder } from '../../redux/Selectors';
 export type OrderComponentOwnProps = {|
   list: ListingModeList,
   index: number,
-|}
+|};
 
 function mapStateToProps(state:State, { list, index }:OrderComponentOwnProps):OrderDetailsProps {
   const order = selectOrder(state, list, index);
