@@ -6,6 +6,10 @@
 
   .OrderDetailsHeader {
     @include horizontal();
+    @media screen and (max-width: 640px) {
+      @include vertical();
+      flex-direction: column-reverse;
+    }
     @include spreadApart();
     padding: $paddingLarge;
 
