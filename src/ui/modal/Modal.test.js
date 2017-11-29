@@ -90,5 +90,21 @@ describe('Modal', () => {
     const modal = shallow(<Modal {...modalProps} />);
     expect(modal.find('button#ModalDismissButton')).toHaveLength(0);
     expect(onDismissSpy.notCalled).toBe(true);
-  })
+  });
+
+  test('passes defaultValues or empty string to inputs', () => {
+    const inputs = [
+      { id: 'input1', label: 'Input One', hint: 'Hint One', validate: () => true, defaultValue: null },
+      { id: 'input2', label: 'Input Two', hint: 'Hint Two', validate: () => true, defaultValue: "Hey" },
+      { id: 'input3', label: 'Input Three', hint: 'Hint Three', validate: () => true }
+    ];
+    const modalProps = {...DEFAULT_PROPS, inputs};
+
+    const modal = shallow(<Modal {...modalProps} />);
+    const modalInputs = modal.find(Input);
+    expect(modalInputs).toHaveLength(inputs.length);
+    expect(modalInputs.get(0).props.defaultValue).toBe('');
+    expect(modalInputs.get(1).props.defaultValue).toBe('Hey');
+    expect(modalInputs.get(2).props.defaultValue).toBe('');
+  });
 });

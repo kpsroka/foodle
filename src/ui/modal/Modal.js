@@ -8,7 +8,8 @@ type ModalInput = {|
   id: string,
   label: string,
   hint: string,
-  validate: string => boolean
+  validate: string => boolean,
+  defaultValue?: string,
 |};
 
 export type ModalProps = {|
@@ -78,7 +79,7 @@ export default class Modal extends React.Component<ModalCombinedProps, ModalStat
                 input =>
                     <Input key={input.id}
                            {...input}
-                           defaultValue=''
+                           defaultValue={input.defaultValue || ''}
                            valid={input.validate(this.state.inputValues[input.id])}
                            onValueChange={(value:string) => this.setInput(input.id, value)}
                     />)}
