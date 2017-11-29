@@ -1,6 +1,6 @@
 // @flow
 
-import type { ListingModeList, OrderData, State } from '../state/State';
+import type { ListingModeList, Meal, OrderData, State } from '../state/State';
 
 export type AddMealAction = {|
   type: 'ADD_MEAL',
@@ -29,6 +29,16 @@ export type SetDisplayedListAction = {|
   type: 'SET_DISPLAYED_LIST',
   payload: {
     list: ListingModeList
+  }
+|};
+
+export type SetMealAction = {|
+  type: 'SET_MEAL',
+  payload: {
+    list: ListingModeList,
+    orderIndex: number,
+    mealIndex: number,
+    meal: Meal
   }
 |};
 
@@ -82,6 +92,7 @@ export type Action =
     DeleteMealAction |
     DismissModalAction |
     SetDisplayedListAction |
+    SetMealAction |
     SetModalMessageAction |
     SetOrderDataAction |
     SetUserNameAction |
