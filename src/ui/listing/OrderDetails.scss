@@ -15,6 +15,10 @@
 
     .OrderDetailsAddMeal {
       @include primaryButton();
+
+      &.Disabled {
+        display: none;
+      }
     }
 
     .OrderDetailsStatus {

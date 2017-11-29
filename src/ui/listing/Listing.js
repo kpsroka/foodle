@@ -13,18 +13,18 @@ export type ListingProps = {|
 |};
 
 export default class Listing extends React.PureComponent<ListingProps> {
-  renderDetailsComponent(index, order) {
-    if (this.props.expandedOrderIndex !== index) {
+  renderDetailsComponent(orderIndex, order) {
+    if (this.props.expandedOrderIndex !== orderIndex) {
       return null;
     }
 
     return (
-      <OrderDetailsComponent order={order} index={index}>
-        {order.meals.map((meal, mealIndex) => (
+      <OrderDetailsComponent list={this.props.list} index={orderIndex}>
+        {order.meals.map((_, mealIndex) => (
           <MealComponent
-              key={`${this.props.list}:${index}:${mealIndex}`}
+              key={`${this.props.list}:${orderIndex}:${mealIndex}`}
               list={this.props.list}
-              orderIndex={index}
+              orderIndex={orderIndex}
               mealIndex={mealIndex}
           />
         ))}
@@ -52,7 +52,6 @@ export default class Listing extends React.PureComponent<ListingProps> {
                     expanded={this.props.expandedOrderIndex === index}>
                   {this.renderDetailsComponent(index, order)}
                 </OrderComponent>
-
             ))}
           </div>
         </div>

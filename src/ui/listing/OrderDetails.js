@@ -8,6 +8,7 @@ import type { Children } from '../Children';
 export type OrderDetailsProps = {|
   meals: Array<Meal>,
   state: OrderState,
+  canAddMeals: boolean,
 |};
 
 export type OrderDetailsDispatch = {|
@@ -35,8 +36,10 @@ export default function OrderDetails(props:OrderDetailsCombinedProps) {
     <div className="OrderDetails">
       <div className="OrderDetailsHeader">
         <button
-            className="OrderDetailsAddMeal"
-            onClick={() => props.onAddMeal()}>+ Add meal</button>
+            className={`OrderDetailsAddMeal${props.canAddMeals ? '' : ' Disabled'}`}
+            onClick={() => { if (props.canAddMeals) { props.onAddMeal(); } }}>
+          + Add meal
+        </button>
         <div className="OrderDetailsStatus">
           <div>
             <span className={getStateLabelStyles(props.state, 'OPEN')}>
