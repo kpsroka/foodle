@@ -10,6 +10,7 @@ function mapStateToProps(state:State):ListingProps {
   const orderData = state.orders;
   if (listingMode && orderData) {
     return {
+      list: listingMode.list,
       orders: listingMode.list === 'ACTIVE' ? orderData.activeOrders : orderData.historicOrders,
       expandedOrderIndex: listingMode.expandedOrderIndex
     };

@@ -3,10 +3,11 @@ import ListingHeaderComponent from './ListingHeaderComponent';
 import Meal from './Meal';
 import OrderComponent from './OrderComponent';
 import OrderDetailsComponent from './OrderDetailsComponent';
-import type { Order } from '../../redux/state/State';
+import type { ListingModeList, Order } from '../../redux/state/State';
 import './Listing.css';
 
 export type ListingProps = {|
+  list: ListingModeList,
   orders: Array<Order>,
   expandedOrderIndex: number
 |};
@@ -21,7 +22,7 @@ export default class Listing extends React.PureComponent<ListingProps> {
       <OrderDetailsComponent order={order} index={index}>
         {order.meals.map((meal, mealIndex) => (
           <Meal
-              key={`${index}:${mealIndex}`}
+              key={`${this.props.list}:${index}:${mealIndex}`}
               meal={meal}
           />
         ))}
@@ -43,7 +44,7 @@ export default class Listing extends React.PureComponent<ListingProps> {
             </div>
             {this.props.orders.map((order, index) => (
                 <OrderComponent
-                    key={index}
+                    key={`${this.props.list}:${index}`}
                     index={index}
                     order={order}
                     expanded={this.props.expandedOrderIndex === index}>
