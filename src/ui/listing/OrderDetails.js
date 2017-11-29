@@ -38,7 +38,6 @@ export default function OrderDetails(props:OrderDetailsCombinedProps) {
             className="OrderDetailsAddMeal"
             onClick={() => props.onAddMeal()}>+ Add meal</button>
         <div className="OrderDetailsStatus">
-          <div className="OrderDetailsStatusString">Status</div>
           <div>
             <span className={getStateLabelStyles(props.state, 'OPEN')}>
               <i className="fa fa-pencil" aria-hidden="true" />

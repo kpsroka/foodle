@@ -15,13 +15,16 @@
 
     .OrderDetailsStatus {
       @include horizontal();
+      @media screen and (max-width: 640px) {
+        @include vertical();
+      }
       align-items: center;
       flex-shrink: 0;
 
-      .OrderDetailsStatusString {
+      &::before {
+        content: 'Status:';
         color: $greyOutColor;
         padding-right: $horizontalPaddingSmall;
-        display: flex;
       }
 
       .OrderDetailsStatusState {
