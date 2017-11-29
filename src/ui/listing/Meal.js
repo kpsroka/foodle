@@ -5,22 +5,41 @@ import type { Meal as MealT } from '../../redux/state/State';
 import './Meal.css';
 import { formatPrice } from '../../PriceFormatter';
 
-export type MealProps = {
+export type MealProps = {|
   meal: MealT,
   editable: boolean,
-};
+|};
 
-export default function Meal(props:MealProps) {
+export type MealDispatch = {|
+  editMeal: () => any;
+  deleteMeal: () => any;
+|};
+
+type MealCombinedProps = MealProps & MealDispatch;
+
+export default function Meal(props:MealCombinedProps) {
   return (
     <div className={`Meal${props.editable ? ' EditableMeal' : ''}`}>
       <div>
-        <div>{props.meal.name}</div>
-        <div>{props.meal.orderer}</div>
-        <div>{formatPrice(props.meal.priceE2)}</div>
+        <div title="Meal name">{props.meal.name}</div>
+        <div title="Meal orderer">{props.meal.orderer}</div>
+        <div title="Meal price">{formatPrice(props.meal.priceE2)}</div>
       </div>
       <div>
-        <div className="MealControl fa fa-pencil-square-o" aria-hidden="true" />
-        <div className="MealControl fa fa-trash" aria-hidden="true" />
+        <div
+            onClick={() => { if (props.editable) { props.editMeal(); } }}
+            onKeyPress={({ key }) => { if (props.editable && key === 'Enter') { props.editMeal(); } }}
+            className="MealControl fa fa-pencil-square-o"
+            title="Edit meal"
+            tabIndex={props.editable ? 0 : -1}
+            role="link" />
+        <div
+            onClick={() => { if (props.editable) { props.deleteMeal(); } }}
+            onKeyPress={({ key }) => { if (props.editable && key === 'Enter') { props.deleteMeal(); } }}
+            className="MealControl fa fa-trash"
+            title="Delete meal"
+            tabIndex={props.editable ? 0 : -1}
+            role="link" />
       </div>
       <div className="DisableControlOverlay" />
     </div>
