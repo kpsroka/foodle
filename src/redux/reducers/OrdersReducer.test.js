@@ -2,6 +2,7 @@ import OrdersReducer from './OrdersReducer';
 import SetOrderData from '../actions/SetOrderData';
 import AddMeal from '../actions/AddMeal';
 import DeleteMeal from '../actions/DeleteMeal';
+import SetMeal from '../actions/SetMeal';
 
 describe('OrdersReducer', () => {
   const defaultOrders = {
@@ -89,6 +90,28 @@ describe('OrdersReducer', () => {
       expect(newOrdersList).toHaveLength(oldOrdersList.length);
       expect(newOrdersList[orderIndex].meals).toHaveLength(oldOrdersList[orderIndex].meals.length - 1);
       expect(newOrdersList[orderIndex].meals).not.toContain(oldOrdersList[orderIndex].meals[mealIndex]);
+    });
+  });
+
+  describe('on SetMeal action', () => {
+    test('sets meal at the given index', () => {
+      const list = 'ACTIVE';
+      const orderIndex = 1;
+      const mealIndex = 1;
+      const meal = { orderer: 'Janina', name: 'Kremówki', priceE2: 9999 };
+
+      const action = SetMeal(list, orderIndex, mealIndex, meal);
+      const newOrders = OrdersReducer(defaultOrders, action);
+
+      expect(newOrders).not.toBe(defaultOrders);
+      expect(newOrders.historicOrders).toBe(defaultOrders.historicOrders);
+      expect(newOrders.activeOrders).not.toBe(defaultOrders.activeOrders);
+
+      const newOrdersList = newOrders.activeOrders;
+      const oldOrdersList = defaultOrders.activeOrders;
+      expect(newOrdersList).toHaveLength(oldOrdersList.length);
+      expect(newOrdersList[orderIndex].meals).toHaveLength(oldOrdersList[orderIndex].meals.length);
+      expect(newOrdersList[orderIndex].meals[mealIndex]).toBe(meal);
     });
   });
 });

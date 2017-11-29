@@ -41,6 +41,14 @@ export default function OrdersReducer(orderData:?OrderData, action:Action):?Orde
           orderData,
           `${listKey}.${action.payload.orderIndex}.meals.${action.payload.mealIndex}`);
     }
+    case 'SET_MEAL': {
+      if (orderData === null) { throw new Error('Illegal state'); }
+      const listKey = listStringToKey(action.payload.list);
+      return dotProp.set(
+          orderData,
+          `${listKey}.${action.payload.orderIndex}.meals.${action.payload.mealIndex}`,
+          action.payload.meal);
+    }
     case '_SET_ORDER_DATA': {
       return action.payload.orders;
     }
