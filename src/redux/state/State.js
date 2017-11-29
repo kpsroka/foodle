@@ -31,9 +31,17 @@ export type AddMealModalMode = {
   orderIndex: number,
 }
 
-export type ModalMode = {
-  type: 'LOGIN' | 'CREATE_ORDER',
-} | MessageModalMode | AddMealModalMode;
+export type EditMealModalMode = {
+  type: 'EDIT_MEAL',
+  list: ListingModeList,
+  orderIndex: number,
+  mealIndex: number
+};
+
+export type ModalMode = { type: 'LOGIN' | 'CREATE_ORDER' } |
+    MessageModalMode |
+    AddMealModalMode |
+    EditMealModalMode;
 
 export type ListingModeList = 'ACTIVE' | 'HISTORY';
 
