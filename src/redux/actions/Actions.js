@@ -12,6 +12,15 @@ export type AddMealAction = {|
   }
 |};
 
+export type DeleteMealAction = {|
+  type: 'DELETE_MEAL',
+  payload: {
+    list:ListingModeList,
+    orderIndex:number,
+    mealIndex:number
+  }
+|};
+
 export type DismissModalAction = {|
   type: 'DISMISS_MODAL'
 |};
@@ -61,6 +70,7 @@ export type ToggleExpandedOrderAction = {|
 
 export type Action =
     AddMealAction |
+    DeleteMealAction |
     DismissModalAction |
     SetDisplayedListAction |
     SetModalMessageAction |
