@@ -1,25 +1,25 @@
 // @flow
 
 import { connect } from 'react-redux';
-import Meal from './Meal';
-import type { Meal as MealT, State } from '../../redux/state/State';
 import type { MealDispatch, MealProps } from './Meal';
+import Meal from './Meal';
+import type { ListingModeList, State } from '../../redux/state/State';
 import type { Dispatch } from '../../redux/actions/Actions';
+import { selectMeal } from '../../redux/Selectors';
 
 export type MealComponentOwnProps = {|
-  meal: MealT,
+  list: ListingModeList,
+  orderIndex: number,
+  mealIndex: number,
 |};
 
 function mapStateToProps(state:State, ownProps:MealComponentOwnProps):MealProps {
-  if (!state.user) {
-    throw new Error('Illegal State');
-  }
-
-  const userName = state.user.name;
+  const meal = selectMeal(state, ownProps.list, ownProps.orderIndex, ownProps.mealIndex);
+  const userName = (state.user ? state.user.name : '');
 
   return {
-    meal: ownProps.meal,
-    editable: userName === ownProps.meal.orderer
+    meal: meal,
+    editable: userName === meal.orderer
   };
 }
 

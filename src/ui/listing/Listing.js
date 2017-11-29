@@ -23,7 +23,9 @@ export default class Listing extends React.PureComponent<ListingProps> {
         {order.meals.map((meal, mealIndex) => (
           <MealComponent
               key={`${this.props.list}:${index}:${mealIndex}`}
-              meal={meal}
+              list={this.props.list}
+              orderIndex={index}
+              mealIndex={mealIndex}
           />
         ))}
       </OrderDetailsComponent>
