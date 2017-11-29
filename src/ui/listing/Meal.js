@@ -22,6 +22,7 @@ export default function Meal(props:MealProps) {
         <div className="MealControl fa fa-pencil-square-o" aria-hidden="true" />
         <div className="MealControl fa fa-trash" aria-hidden="true" />
       </div>
+      <div className="DisableControlOverlay" />
     </div>
   );
 }

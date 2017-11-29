@@ -4,19 +4,37 @@
 .Meal {
   @include horizontal();
   @include listingRow();
+  position: relative;
+  padding: $verticalPaddingSmall 0;
 
-  &+.Meal {
-    margin-top: $verticalPaddingSmall;
+  .DisableControlOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: $backgroundShade;
+  }
+
+  &.EditableMeal {
+    .DisableControlOverlay {
+      display: none;
+    }
+  }
+
+  .MealControl {
+    color: $greyOutColor;
+    padding: $verticalPaddingSmall/2 $horizontalPaddingSmall/2 ;
+    border: 0.15vh solid $greyOutColor;
+    border-radius: $borderRadius;
+
+    &+.MealControl {
+      margin-left: $horizontalPaddingSmall/2;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
-.MealControl {
-  color: $greyOutColor;
-  padding: $verticalPaddingSmall/2 $horizontalPaddingSmall/2 ;
-  border: 0.15vh solid $greyOutColor;
-  border-radius: $borderRadius;
-
-  &+.MealControl {
-    margin-left: $horizontalPaddingSmall/2;
-  }
-}
