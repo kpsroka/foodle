@@ -61,6 +61,15 @@ export type ShowAddMealModalAction = {|
   }
 |};
 
+export type ShowEditMealModalAction = {|
+  type: 'SHOW_EDIT_MEAL_MODAL',
+  payload: {
+    list:ListingModeList,
+    orderIndex:number,
+    mealIndex:number
+  }
+|};
+
 export type ToggleExpandedOrderAction = {|
   type: 'TOGGLE_EXPANDED_ORDER',
   payload: {
@@ -77,6 +86,7 @@ export type Action =
     SetOrderDataAction |
     SetUserNameAction |
     ShowAddMealModalAction |
+    ShowEditMealModalAction |
     ToggleExpandedOrderAction;
 
 export type GetState = () => State;
