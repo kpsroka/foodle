@@ -15,18 +15,18 @@
 
     .OrderDetailsStatus {
       @include horizontal();
+      align-items: center;
       flex-shrink: 0;
 
       .OrderDetailsStatusString {
         color: $greyOutColor;
         padding-right: $horizontalPaddingSmall;
         display: flex;
-        align-items: center;
       }
 
       .OrderDetailsStatusState {
-        padding: $horizontalPaddingSmall $verticalPaddingLarge;
-        border-width: 0.5vh 0;
+        padding: 0 $horizontalPaddingSmall;
+        border-width: 0.3vh 0;
         border-style: solid;
         display: inline-flex;
         align-items: center;
