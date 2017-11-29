@@ -9,14 +9,15 @@ import type { Dispatch } from '../../redux/actions/Actions';
 import LogIn from '../../redux/actions/LogIn';
 import AddMeal from '../../redux/actions/AddMeal';
 import DispatchAndCloseModal from '../../redux/actions/DispatchAndCloseModalThunk';
-import { isValidPriceString } from '../../PriceFormatter';
+import { formatPriceNoCurrency, isValidPriceString } from '../../PriceFormatter';
+import { selectMeal } from '../../redux/Selectors';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const logToConsole = (arg) => console.log(arg);
 
 export type ModalComponentOwnProps = {| modalMode: ModalMode |};
 
-function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
+function mapStateToProps(state:State, ownProps:ModalComponentOwnProps):ModalProps {
   switch (ownProps.modalMode.type) {
     case 'LOGIN':
       return {
@@ -85,6 +86,39 @@ function mapStateToProps({}:State, ownProps:ModalComponentOwnProps):ModalProps {
         ],
         userCanDismiss: true,
       }
+    }
+    case 'EDIT_MEAL': {
+      const meal =
+          selectMeal(state, ownProps.modalMode.list, ownProps.modalMode.orderIndex, ownProps.modalMode.mealIndex);
+
+      return {
+        label: 'Edit meal',
+        submitButtonText: 'Confirm',
+        inputs: [
+          {
+            id: 'meal',
+            label: 'Orders from',
+            hint: 'Name of the restaurant',
+            validate: nonEmptyString,
+            defaultValue: meal.name,
+          },
+          {
+            id: 'orderer',
+            label: 'Owner name',
+            hint: 'Your name',
+            validate: nonEmptyString,
+            defaultValue: meal.orderer
+          },
+          {
+            id: 'price',
+            label: 'Price',
+            hint: 'e.g. 20,00',
+            validate: isValidPriceString,
+            defaultValue: formatPriceNoCurrency(meal.priceE2)
+          }
+        ],
+        userCanDismiss: true,
+      };
     }
     default:
       return { label: '💩', submitButtonText: '💩', inputs: [], userCanDismiss: false }

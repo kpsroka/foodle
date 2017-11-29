@@ -3,7 +3,13 @@
 const currencyFormat =
     new window.Intl.NumberFormat('pl', { style: 'currency', currency: 'PLN', minimumFractionDigits: 2 });
 
+const noCurrencyFormat = new window.Intl.NumberFormat('pl', { minimumFractionDigits: 2 });
+
 const priceStringRegexp = /^\s*(\d+)(?:[,.](\d{0,2}))?\s*$/;
+
+export function formatPriceNoCurrency(priceE2:number):string {
+  return noCurrencyFormat.format(priceE2/100);
+}
 
 export function formatPrice(priceE2:number):string {
   return currencyFormat.format(priceE2/100);
