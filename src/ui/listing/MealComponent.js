@@ -6,6 +6,7 @@ import Meal from './Meal';
 import type { ListingModeList, State } from '../../redux/state/State';
 import type { Dispatch } from '../../redux/actions/Actions';
 import { selectMeal } from '../../redux/Selectors';
+import DeleteMeal from '../../redux/actions/DeleteMeal';
 
 export type MealComponentOwnProps = {|
   list: ListingModeList,
@@ -25,7 +26,7 @@ function mapStateToProps(state:State, ownProps:MealComponentOwnProps):MealProps 
 
 function mapPropsToDispatch(dispatch:Dispatch, ownProps:MealComponentOwnProps):MealDispatch {
   return {
-    deleteMeal: () => {},
+    deleteMeal: () => { dispatch(DeleteMeal(ownProps.list, ownProps.orderIndex, ownProps.mealIndex)); },
     editMeal: () => {},
   };
 }
