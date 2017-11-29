@@ -4,4 +4,19 @@
 .Meal {
   @include horizontal();
   @include listingRow();
+
+  &+.Meal {
+    margin-top: $verticalPaddingSmall;
+  }
+}
+
+.MealControl {
+  color: $greyOutColor;
+  padding: $verticalPaddingSmall/2 $horizontalPaddingSmall/2 ;
+  border: 0.15vh solid $greyOutColor;
+  border-radius: $borderRadius;
+
+  &+.MealControl {
+    margin-left: $horizontalPaddingSmall/2;
+  }
 }

@@ -17,6 +17,10 @@ export default function Meal(props:MealProps) {
         <div>{props.meal.orderer}</div>
         <div>{formatPrice(props.meal.priceE2)}</div>
       </div>
+      <div>
+        <div className="MealControl fa fa-pencil-square-o" aria-hidden="true" />
+        <div className="MealControl fa fa-trash" aria-hidden="true" />
+      </div>
     </div>
   );
 }
