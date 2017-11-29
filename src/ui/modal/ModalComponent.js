@@ -9,8 +9,9 @@ import type { Dispatch } from '../../redux/actions/Actions';
 import LogIn from '../../redux/actions/LogIn';
 import AddMeal from '../../redux/actions/AddMeal';
 import DispatchAndCloseModal from '../../redux/actions/DispatchAndCloseModalThunk';
-import { formatPriceNoCurrency, isValidPriceString } from '../../PriceFormatter';
+import { formatPriceNoCurrency, isValidPriceString, parsePrice } from '../../PriceFormatter';
 import { selectMeal } from '../../redux/Selectors';
+import SetMeal from '../../redux/actions/SetMeal';
 
 const nonEmptyString = (arg) => (typeof arg === 'string' && arg !== '');
 const logToConsole = (arg) => console.log(arg);
@@ -128,12 +129,23 @@ function mapStateToProps(state:State, ownProps:ModalComponentOwnProps):ModalProp
 function getOnSubmitDispatch(modalMode:ModalMode, dispatch:Dispatch):({[string]:string} => any) {
   switch (modalMode.type) {
     case 'LOGIN': return (input) => dispatch(LogIn({name: input.name}));
-    case 'ADD_MEAL': return (input) => {
-      dispatch(
-          DispatchAndCloseModal(
-              // $FlowFixMe: flow can't refine modalMode to AddMealModalMode?
-              AddMeal(modalMode.orderIndex, input.meal, input.orderer, input.price)));
-    };
+    case 'ADD_MEAL': {
+      const { orderIndex } = modalMode;
+      return (input) => {
+        dispatch(
+            DispatchAndCloseModal(
+                AddMeal(orderIndex, input.meal, input.orderer, input.price)));
+      };
+    }
+    case 'EDIT_MEAL': {
+      const {list, orderIndex, mealIndex} = modalMode;
+      return (input) => {
+        dispatch(
+            DispatchAndCloseModal(
+                SetMeal(list, orderIndex, mealIndex,
+                    {name: input.meal, orderer: input.orderer, priceE2: parsePrice(input.price)})));
+      };
+    }
     default: return logToConsole;
   }
 }
