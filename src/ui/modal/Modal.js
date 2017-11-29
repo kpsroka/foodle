@@ -33,7 +33,9 @@ type ModalState = {|
 export default class Modal extends React.Component<ModalCombinedProps, ModalState> {
   constructor(props:ModalCombinedProps) {
     super(props);
-    let inputValues = props.inputs.reduce((accumulator, input) => ({ ...accumulator, [input.id]: '' }), {});
+    let inputValues = props.inputs.reduce(
+        (accumulator, input) => ({ ...accumulator, [input.id]: input.defaultValue || '' }),
+        {});
     this.state = { inputValues };
   }
 
