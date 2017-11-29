@@ -8,7 +8,7 @@ describe('Modal', () => {
   const DEFAULT_PROPS =
       { label: '', inputs: [], submitButtonText: 'OK', userCanDismiss: false, onSubmit: () => {}, onDismiss: () => {} };
 
-  it('renders inputs in given order', () => {
+  test('renders inputs in given order', () => {
     const inputs = [
       { id: 'input1', label: 'Input One', hint: 'Hint One', validate: () => true },
       { id: 'input2', label: 'Input Two', hint: 'Hint Two', validate: () => true },
@@ -21,7 +21,7 @@ describe('Modal', () => {
     inputs.forEach((input, index) => { expect(modal.find(Input).get(index).props).toMatchObject(input); });
   });
 
-  it('on submit button click validates inputs against provided functions, and calls onSubmit', () => {
+  test('on submit button click validates inputs against provided functions, and calls onSubmit', () => {
     const onSubmitSpy = sinon.spy();
     const inputs = [
       { id: 'input1', label: 'Input One', hint: 'Hint One', validate: (str) => (str === 'foo') },
@@ -51,7 +51,7 @@ describe('Modal', () => {
     expect(onSubmitSpy.calledOnce).toBe(true);
   });
 
-  it('renders submit button with the given text', () => {
+  test('renders submit button with the given text', () => {
     const submitButtonText = 'Eneduerabe';
     const modalProps = {...DEFAULT_PROPS, submitButtonText};
     const modal = shallow(<Modal {...modalProps} />);
@@ -60,7 +60,7 @@ describe('Modal', () => {
     expect(modal.find('button#ModalSubmitButton').text()).toBe(submitButtonText);
   });
 
-  it('calls onSubmit on button press if no inputs are provided', () => {
+  test('calls onSubmit on button press if no inputs are provided', () => {
     const onSubmitSpy = sinon.spy();
     const modalProps = {...DEFAULT_PROPS, inputs: [], onSubmit: onSubmitSpy};
     const modal = shallow(<Modal {...modalProps} />);
@@ -72,7 +72,7 @@ describe('Modal', () => {
     expect(onSubmitSpy.calledOnce).toBe(true);
   });
 
-  it('calls onDismiss on button press if userCanDismiss === true', () => {
+  test('calls onDismiss on button press if userCanDismiss === true', () => {
     const onDismissSpy = sinon.spy();
     const modalProps = {...DEFAULT_PROPS, userCanDismiss: true, onDismiss: onDismissSpy};
 
@@ -83,7 +83,7 @@ describe('Modal', () => {
     expect(onDismissSpy.calledOnce).toBe(true);
   });
 
-  it('does not render dismiss button if userCanDismiss === false', () => {
+  test('does not render dismiss button if userCanDismiss === false', () => {
     const onDismissSpy = sinon.spy();
     const modalProps = {...DEFAULT_PROPS, userCanDismiss: false, onDismiss: onDismissSpy};
 

@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import ListingHeader from './ListingHeader';
 
 describe('ListingHeader', () => {
-  it('renders given labels in order', () => {
+  test('renders given labels in order', () => {
     const labels = [{ id: 'foo', text: 'textFoo' }, { id: 'bar', text: 'textBar' }, { id: 'baz', text: 'textBaz' }];
     const combinedProps = { labels, activeLabelIndex: 0, onHeaderClicked: () => {}};
     const listingHeader = shallow(<ListingHeader {...combinedProps}/>);
@@ -15,7 +15,7 @@ describe('ListingHeader', () => {
     });
   });
 
-  it('calls onHeaderClicked with clicked label ID', () => {
+  test('calls onHeaderClicked with clicked label ID', () => {
     const onHeaderClicked = sinon.spy();
     const labels = [{ id: 'foo', text: 'textFoo' }, { id: 'bar', text: 'textBar' }, { id: 'baz', text: 'textBaz' }];
     const combinedProps = { labels, activeLabelIndex: 0, onHeaderClicked };

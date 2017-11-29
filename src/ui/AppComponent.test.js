@@ -5,7 +5,7 @@ import App from './App';
 import AppComponent from './AppComponent';
 
 describe('AppComponent', () => {
-  it('sets hasListing to false and hasModal to null if state.ui.listingMode/modalMode are not set', () => {
+  test('sets hasListing to false and hasModal to null if state.ui.listingMode/modalMode are not set', () => {
     const state = { ui: {} };
     const store = createStore((x) => (x), state);
     const component = shallow(<AppComponent store={store} />);
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     expect(component.find(App).get(0).props.modalMode).toBe(null);
   });
 
-  it('sets hasListing to be true if state.ui.listingMode is set', () => {
+  test('sets hasListing to be true if state.ui.listingMode is set', () => {
     const state = { ui: { listingMode: { list: 'ACTIVE', expandedOrderIndex: 0 } } };
     const store = createStore((x) => (x), state);
     const component = shallow(<AppComponent store={store} />);
@@ -24,7 +24,7 @@ describe('AppComponent', () => {
     expect(component.find(App).get(0).props.hasListing).toBe(true);
   });
 
-  it('passes state.ui.modalMode as prop if set in state', () => {
+  test('passes state.ui.modalMode as prop if set in state', () => {
     const state = { ui: { modalMode: { type: 'LOGIN', userCanDismiss: true } } };
     const store = createStore((x) => (x), state);
     const component = shallow(<AppComponent store={store} />);
