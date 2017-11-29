@@ -4,6 +4,7 @@ import SetModalMessage from '../actions/SetModalMessage';
 import SetDisplayedList from '../actions/SetDisplayedList';
 import ToggleExpandedOrder from '../actions/ToggleExpandedOrder';
 import ShowAddMealModal from '../actions/ShowAddMealModal';
+import ShowEditMealModal from '../actions/ShowEditMealModal';
 
 describe('UiReducer', () => {
   describe('on DismissModal action', () => {
@@ -66,5 +67,17 @@ describe('UiReducer', () => {
       expect(UiReducer(uiState, ShowAddMealModal(orderIndex)).modalMode)
           .toMatchObject({ type: 'ADD_MEAL', orderIndex });
     });
-  })
+  });
+
+  describe('on ShowEditMealModal action', () => {
+    test('sets modalMode to EDIT_MEAL with proper payload set', () => {
+      const list = 'ACTIVE';
+      const orderIndex = 4;
+      const mealIndex = 2;
+      const uiState = { listingMode: null, modalMode: null };
+
+      expect(UiReducer(uiState, ShowEditMealModal(list, orderIndex, mealIndex)).modalMode)
+          .toMatchObject({ type: 'EDIT_MEAL', list, orderIndex, mealIndex });
+    });
+  });
 });

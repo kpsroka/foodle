@@ -34,6 +34,16 @@ export default function UiReducer(uiState?:UiState, action:Action):UiState {
           orderIndex: action.payload.index
         }
       };
+    case 'SHOW_EDIT_MEAL_MODAL':
+      return {
+        ...uiState,
+        modalMode: {
+          type: 'EDIT_MEAL',
+          list: action.payload.list,
+          orderIndex: action.payload.orderIndex,
+          mealIndex: action.payload.mealIndex
+        }
+      };
     case 'SET_DISPLAYED_LIST':
       const sameList = uiState.listingMode && (uiState.listingMode.list === action.payload.list);
       const expandedOrderIndex = uiState.listingMode ? uiState.listingMode.expandedOrderIndex : null;
