@@ -86,7 +86,7 @@ describe('OrdersReducer', () => {
 
       const newOrdersList = newOrders.activeOrders;
       const oldOrdersList = defaultOrders.activeOrders;
-      expect(newOrdersList).toHaveLength(oldOrdersList);
+      expect(newOrdersList).toHaveLength(oldOrdersList.length);
       expect(newOrdersList[orderIndex].meals).toHaveLength(oldOrdersList[orderIndex].meals.length - 1);
       expect(newOrdersList[orderIndex].meals).not.toContain(oldOrdersList[orderIndex].meals[mealIndex]);
     });

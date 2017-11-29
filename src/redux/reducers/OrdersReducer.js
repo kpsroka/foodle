@@ -31,12 +31,8 @@ export default function OrdersReducer(orderData:?OrderData, action:Action):?Orde
   switch (action.type) {
     case 'ADD_MEAL': {
       if (orderData === null) { throw new Error('Illegal state'); }
-      const order = {...orderData.activeOrders[action.payload.orderIndex]};
-      order.meals = order.meals.slice();
-      order.meals.push(createMeal(action));
-      const activeOrders = orderData.activeOrders.slice();
-      activeOrders[action.payload.orderIndex] = order;
-      return {...orderData, activeOrders};
+      const newMeal = createMeal(action);
+      return dotProp.set(orderData, `activeOrders.${action.payload.orderIndex}.meals`, meals => [...meals, newMeal]);
     }
     case 'DELETE_MEAL': {
       if (orderData === null) { throw new Error('Illegal state'); }
